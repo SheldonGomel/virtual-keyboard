@@ -140,6 +140,25 @@ const changeLang = () =>{
   addKeyboard();
 };
 
+function editTextarea(symbol) {
+  const textArea = document.querySelector('.textarea');
+  const text = textArea.value;
+  let indexStart = textArea.selectionStart;
+  const indexEnd = textArea.selectionEnd;
+  if (symbol === 'Backspace') {
+    if (indexStart > 0) {
+      textArea.value = text.slice(0, indexStart - 1) + text.slice(indexEnd);
+      textArea.selectionEnd = indexStart - 1;
+    }
+  } else if (indexStart === indexEnd) {
+    textArea.value = text.slice(0, indexStart) + symbol + text.slice(indexStart);
+    textArea.selectionEnd = indexStart + 1;
+  } else {
+    textArea.value = text.slice(0, indexStart) + symbol + text.slice(indexEnd);
+    textArea.selectionEnd = indexStart + 1;
+  }
+}
+
 document.addEventListener('keydown', (event) => {
   if ((event.code === 'ControlLeft' && event.altKey) || (event.ctrlKey && event.code === 'AltLeft')) {
     changeLang();
@@ -157,19 +176,28 @@ document.addEventListener('keydown', (event) => {
       case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
       default: textSymbol = enArr[indexPressedKey];
     }
-    textArea.textContent += textSymbol;
+    //textArea.value += textSymbol;
+    editTextarea(textSymbol);
   } else if (textSymbol === 'Space') {
     textSymbol = ' ';
-    textArea.textContent += textSymbol;
+    //textArea.textContent += textSymbol;
+    editTextarea(textSymbol);
+  } else if (textSymbol === 'Backspace') {
+    //textArea.value = textArea.value.slice(0, -1);
+    editTextarea(textSymbol);
   }
   console.log([indexPressedKey]);
 });
+
+document.addEventListener('keydown', (event) => {
+  event.preventDefault();
+});
+
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('key')) {
-    console.log(event.target.classList.contains('key'));
     const indexPressedKey = keysObj.keyCodes.indexOf(event.target.classList[1]);
     const textArea = document.querySelector('.textarea');
-    console.log(enArr[indexPressedKey]);
+
     let textSymbol = enArr[indexPressedKey];
     if (textSymbol.length === 1) {
       switch (lang) {
@@ -179,11 +207,13 @@ document.addEventListener('click', (event) => {
         case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
         default: textSymbol = enArr[indexPressedKey];
       }
-      textArea.textContent += textSymbol;
+      editTextarea(textSymbol);
     } else if (textSymbol === 'Space') {
       textSymbol = ' ';
-      textArea.textContent += textSymbol;
+      editTextarea(textSymbol);
     }
+
+    console.log(enArr[indexPressedKey]);
   }
 });
 
