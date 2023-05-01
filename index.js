@@ -26,7 +26,31 @@ const keysObj = {
     'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp',
     'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
 };
-  // let keybrd = [];
+let enArr = [
+  ...keysObj.en[0],
+  ...keysObj.en[1],
+  ...keysObj.en[2],
+  ...keysObj.en[3],
+  ...keysObj.en[4]];
+let ruArr = [
+  ...keysObj.ru[0],
+  ...keysObj.ru[1],
+  ...keysObj.ru[2],
+  ...keysObj.ru[3],
+  ...keysObj.ru[4]];
+let enCapsArr = [
+  ...keysObj.enCaps[0],
+  ...keysObj.enCaps[1],
+  ...keysObj.enCaps[2],
+  ...keysObj.enCaps[3],
+  ...keysObj.enCaps[4]];
+let ruCapsArr = [
+  ...keysObj.ruCaps[0],
+  ...keysObj.ruCaps[1],
+  ...keysObj.ruCaps[2],
+  ...keysObj.ruCaps[3],
+  ...keysObj.ruCaps[4]];
+// let keybrd = [];
 // document.onkeypress = function (ev) {
 //   keybrd.push(ev.charCode);
 //   console.log(keybrd);
@@ -54,7 +78,16 @@ const createHeader = () => {
 function createButton(value) {
   const button = document.createElement('div');
   button.classList.add('key');
-  button.classList.add(value);
+  let keyIndex;
+  switch (lang) {
+    case 'ru': keyIndex = ruArr.indexOf(value); break;
+    case 'en': keyIndex = enArr.indexOf(value); break;
+    case 'ruCaps': keyList = keysObj.ruCaps.slice(0); break;
+    case 'enCaps': keyList = keysObj.enCaps.slice(0); break;
+    default: keyList = keysObj.en.slice(0);
+  }
+
+  button.classList.add(keysObj.keyCodes[keyIndex]);
   let symbol;
   switch (value) {
     case 'Up': symbol = '▲'; break;
@@ -63,7 +96,8 @@ function createButton(value) {
     case 'Right': symbol = '►'; break;
     default: symbol = value;
   }
-  button.innerHTML = `<span>${symbol}</span>`;
+//  button.innerHTML = `<span>${symbol}</span>`;
+  button.innerHTML = `${symbol}`;
   return button;
 }
 
@@ -111,10 +145,46 @@ document.addEventListener('keydown', (event) => {
     changeLang();
   }
   console.log(event.code);
-  let indexPressedKey = keysObj.keyCodes.indexOf(event.code);
+  const indexPressedKey = keysObj.keyCodes.indexOf(event.code);
   const textArea = document.querySelector('.textarea');
-  if(event.key.length < 2) textArea.textContent += event.key;
-  console.log(event.key);
+  console.log(enArr[indexPressedKey]);
+  let textSymbol = enArr[indexPressedKey];
+  if (textSymbol.length === 1) {
+    switch (lang) {
+      case 'ru': textSymbol = ruArr[indexPressedKey]; break;
+      case 'en': textSymbol = enArr[indexPressedKey]; break;
+      case 'ruCaps': textSymbol = ruCapsArr[indexPressedKey]; break;
+      case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
+      default: textSymbol = enArr[indexPressedKey];
+    }
+    textArea.textContent += textSymbol;
+  } else if (textSymbol === 'Space') {
+    textSymbol = ' ';
+    textArea.textContent += textSymbol;
+  }
+  console.log([indexPressedKey]);
+});
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('key')) {
+    console.log(event.target.classList.contains('key'));
+    const indexPressedKey = keysObj.keyCodes.indexOf(event.target.classList[1]);
+    const textArea = document.querySelector('.textarea');
+    console.log(enArr[indexPressedKey]);
+    let textSymbol = enArr[indexPressedKey];
+    if (textSymbol.length === 1) {
+      switch (lang) {
+        case 'ru': textSymbol = ruArr[indexPressedKey]; break;
+        case 'en': textSymbol = enArr[indexPressedKey]; break;
+        case 'ruCaps': textSymbol = ruCapsArr[indexPressedKey]; break;
+        case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
+        default: textSymbol = enArr[indexPressedKey];
+      }
+      textArea.textContent += textSymbol;
+    } else if (textSymbol === 'Space') {
+      textSymbol = ' ';
+      textArea.textContent += textSymbol;
+    }
+  }
 });
 
 window.addEventListener('load', () => {

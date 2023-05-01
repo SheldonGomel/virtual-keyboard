@@ -94,20 +94,20 @@ background-color:#000
 {
   color: rgba(0, 0, 0, 0);
 }
-.Shift{
+.ShiftLeft{
   width: 130px;
   background-color:#000
 }
-.Ctrl{
+.ControlLeft{
   width: 85px;
   background-color:#000
 }
-.Del,
-.Win,
-.Alt,
-.Up,
-.Down,
-.Left,
-.Right{
+.Delete,
+.MetaLeft,
+.AltLeft,
+.ArrowUp,
+.ArrowDown,
+.ArrowLeft,
+.ArrowRight{
   background-color:#000
 }
