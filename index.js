@@ -222,5 +222,6 @@ document.addEventListener('click', (event) => {
 });
 
 window.addEventListener('load', () => {
+  alert('Я не успел до конца доделать, буду признателен, если дадите еще немного время');
   createHeader();
 });
