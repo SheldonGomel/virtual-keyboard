@@ -24,7 +24,7 @@ const keysObj = {
   keyCodes: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
     'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF',
     'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp',
-    'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
+    'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowRight', 'ArrowDown', 'ArrowRight', 'ControlRight'],
 };
 let enArr = [
   ...keysObj.en[0],
@@ -82,9 +82,9 @@ function createButton(value) {
   switch (lang) {
     case 'ru': keyIndex = ruArr.indexOf(value); break;
     case 'en': keyIndex = enArr.indexOf(value); break;
-    case 'ruCaps': keyList = keysObj.ruCaps.slice(0); break;
-    case 'enCaps': keyList = keysObj.enCaps.slice(0); break;
-    default: keyList = keysObj.en.slice(0);
+    case 'ruCaps': keyIndex = ruCapsArr.indexOf(value); break;
+    case 'enCaps': keyIndex = enCapsArr.indexOf(value); break;
+    default: keyIndex = enArr.indexOf(value); break;
   }
 
   button.classList.add(keysObj.keyCodes[keyIndex]);
@@ -166,6 +166,7 @@ document.addEventListener('keydown', (event) => {
   console.log(event.code);
   const indexPressedKey = keysObj.keyCodes.indexOf(event.code);
   const textArea = document.querySelector('.textarea');
+  document.querySelector(`.${event.code}`).classList.add('press');
   console.log(enArr[indexPressedKey]);
   let textSymbol = enArr[indexPressedKey];
   if (textSymbol.length === 1) {
@@ -191,6 +192,9 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keydown', (event) => {
   event.preventDefault();
+});
+document.addEventListener('keyup', (event) => {
+  document.querySelector(`.${event.code}`).classList.remove('press');
 });
 
 document.addEventListener('click', (event) => {

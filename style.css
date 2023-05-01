@@ -62,6 +62,7 @@ body{
   color:#444;
 }
 
+
 .twinkle{
   transition-duration: 0.3s;
   transform: scale(0);
@@ -105,9 +106,14 @@ background-color:#000
 .Delete,
 .MetaLeft,
 .AltLeft,
+.ArrowRight,
 .ArrowUp,
 .ArrowDown,
 .ArrowLeft,
 .ArrowRight{
   background-color:#000
+}
+.press{
+  background-color: #0f0;
+  color:#444;
 }
