@@ -1,30 +1,52 @@
 let lang = 'ru';
+let enCapsLock = false;
 const keysObj = {
   ru: [
     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '/', 'Del'],
     ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
-    ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Up', 'Shift'],
-    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Left', 'Down', 'Right', 'Ctrl']],
-  ruCaps: [['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
+    ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  ruCaps: [
+    ['Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
+    ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'Del'],
+    ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
+    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  ruShift: [
+    ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del'],
     ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
-    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Up', 'Shift'],
-    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Left', 'Down', 'Right', 'Ctrl']],
-  en: [['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
+    ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  en: [
+    ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del'],
     ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
-    ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Up', 'Shift'],
-    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Left', 'Down', 'Right', 'Ctrl']],
-  enCaps: [['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
+    ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  enCaps: [
+    ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
+    ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del'],
+    ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Enter'],
+    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  enShift:[
+    ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
     ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Del'],
     ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'],
-    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'Up', 'Shift'],
-    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Left', 'Down', 'Right', 'Ctrl']],
+    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '▲', 'Shift'],
+    ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '◄', '▼', '►', 'Ctrl']],
+  keyMap: [
+    ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
+    ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
+    ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
+    ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
+    ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight']],
   keyCodes: ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
     'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF',
     'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp',
-    'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowRight', 'ArrowDown', 'ArrowRight', 'ControlRight'],
+    'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'],
 };
 let enArr = [
   ...keysObj.en[0],
@@ -50,11 +72,19 @@ let ruCapsArr = [
   ...keysObj.ruCaps[2],
   ...keysObj.ruCaps[3],
   ...keysObj.ruCaps[4]];
-// let keybrd = [];
-// document.onkeypress = function (ev) {
-//   keybrd.push(ev.charCode);
-//   console.log(keybrd);
-// }
+let ruShiftArr = [
+  ...keysObj.ruShift[0],
+  ...keysObj.ruShift[1],
+  ...keysObj.ruShift[2],
+  ...keysObj.ruShift[3],
+  ...keysObj.ruShift[4]];
+let enShiftArr = [
+  ...keysObj.enShift[0],
+  ...keysObj.enShift[1],
+  ...keysObj.enShift[2],
+  ...keysObj.enShift[3],
+  ...keysObj.enShift[4]];
+
 const main = document.createElement('main');
 const createHeader = () => {
   const header = document.createElement('header');
@@ -64,39 +94,36 @@ const createHeader = () => {
   title.classList.add('title');
   title.innerText = 'RSS Virtual Keyboard';
   header.appendChild(title);
-
   document.body.appendChild(main);
   const textArea = document.createElement('textarea');
   textArea.classList.add('textarea');
   main.appendChild(textArea);
-  // const keyboardBlock = document.createElement('div');
-  // keyboardBlock.classList.add('keyboard-wrapper');
-  // main.appendChild(keyboardBlock);
   addKeyboard();
 };
 
 function createButton(value) {
   const button = document.createElement('div');
   button.classList.add('key');
-  let keyIndex;
+  button.classList.add(value);
+  const keyIndex = keysObj.keyCodes.indexOf(value);
+  let keyList;
   switch (lang) {
-    case 'ru': keyIndex = ruArr.indexOf(value); break;
-    case 'en': keyIndex = enArr.indexOf(value); break;
-    case 'ruCaps': keyIndex = ruCapsArr.indexOf(value); break;
-    case 'enCaps': keyIndex = enCapsArr.indexOf(value); break;
-    default: keyIndex = enArr.indexOf(value); break;
+    case 'ru': keyList = ruArr.slice(0); break;
+    case 'en': keyList = enArr.slice(0); break;
+    case 'ruCaps': keyList = ruCapsArr.slice(0); break;
+    case 'enCaps': keyList = enCapsArr.slice(0); break;
+    case 'ruShift': keyList = ruShiftArr.slice(0); break;
+    case 'enShift': keyList = enShiftArr.slice(0); break;
+    default: keyList = enArr.slice(0);
   }
-
-  button.classList.add(keysObj.keyCodes[keyIndex]);
   let symbol;
   switch (value) {
-    case 'Up': symbol = '▲'; break;
-    case 'Down': symbol = '▼'; break;
-    case 'Left': symbol = '◄'; break;
-    case 'Right': symbol = '►'; break;
-    default: symbol = value;
+    case 'ArrowUp': symbol = '▲'; break;
+    case 'ArrowDown': symbol = '▼'; break;
+    case 'ArrowLeft': symbol = '◄'; break;
+    case 'ArrowRight': symbol = '►'; break;
+    default: symbol = keyList[keyIndex];
   }
-//  button.innerHTML = `<span>${symbol}</span>`;
   button.innerHTML = `${symbol}`;
   return button;
 }
@@ -108,34 +135,23 @@ function addRow(arr) {
     const button = createButton(btn);
     row.appendChild(button);
   });
-  console.log(row);
   return row;
 }
 
 const addKeyboard = () => {
-  let keyList;
-  switch (lang) {
-    case 'ru': keyList = keysObj.ru.slice(0); break;
-    case 'en': keyList = keysObj.en.slice(0); break;
-    case 'ruCaps': keyList = keysObj.ruCaps.slice(0); break;
-    case 'enCaps': keyList = keysObj.enCaps.slice(0); break;
-    default: keyList = keysObj.en.slice(0);
-  }
   const keyboardBlock = document.createElement('div');
   keyboardBlock.classList.add('keyboard-wrapper');
   main.appendChild(keyboardBlock);
   const keyboard = document.querySelector('.keyboard-wrapper');
-  keyList.forEach((rowOfkeys) => {
+  keysObj.keyMap.forEach((rowOfkeys) => {
     const row = addRow(rowOfkeys);
     keyboard.appendChild(row);
   });
-  // return container;
 };
 
 const changeLang = () =>{
   if (lang === 'ru') lang = 'en';
   else lang = 'ru';
-  console.log(lang);
   document.querySelector('.keyboard-wrapper').remove();
   addKeyboard();
 };
@@ -143,13 +159,22 @@ const changeLang = () =>{
 function editTextarea(symbol) {
   const textArea = document.querySelector('.textarea');
   const text = textArea.value;
-  let indexStart = textArea.selectionStart;
+  const indexStart = textArea.selectionStart;
   const indexEnd = textArea.selectionEnd;
   if (symbol === 'Backspace') {
     if (indexStart > 0) {
       textArea.value = text.slice(0, indexStart - 1) + text.slice(indexEnd);
       textArea.selectionEnd = indexStart - 1;
     }
+  } else if (symbol === 'Del') {
+    if (indexStart < textArea.value.length) {
+      textArea.value = text.slice(0, indexStart)
+                     + text.slice(indexEnd + 1);
+      textArea.selectionEnd = indexStart;
+    }
+  } else if (symbol === 'Tab') {
+    textArea.value = `${text.slice(0, indexStart)}    ${text.slice(indexStart)}`;
+    textArea.selectionEnd = indexStart + 4;
   } else if (indexStart === indexEnd) {
     textArea.value = text.slice(0, indexStart) + symbol + text.slice(indexStart);
     textArea.selectionEnd = indexStart + 1;
@@ -159,35 +184,61 @@ function editTextarea(symbol) {
   }
 }
 
-document.addEventListener('keydown', (event) => {
-  if ((event.code === 'ControlLeft' && event.altKey) || (event.ctrlKey && event.code === 'AltLeft')) {
-    changeLang();
-  }
-  console.log(event.code);
-  const indexPressedKey = keysObj.keyCodes.indexOf(event.code);
-  const textArea = document.querySelector('.textarea');
-  document.querySelector(`.${event.code}`).classList.add('press');
-  console.log(enArr[indexPressedKey]);
+const updateTextArea = (indexPressedKey) => {
   let textSymbol = enArr[indexPressedKey];
+
   if (textSymbol.length === 1) {
     switch (lang) {
       case 'ru': textSymbol = ruArr[indexPressedKey]; break;
       case 'en': textSymbol = enArr[indexPressedKey]; break;
       case 'ruCaps': textSymbol = ruCapsArr[indexPressedKey]; break;
       case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
+      case 'ruShift': textSymbol = ruShiftArr[indexPressedKey]; break;
+      case 'enShift': textSymbol = enShiftArr[indexPressedKey]; break;
       default: textSymbol = enArr[indexPressedKey];
     }
-    //textArea.value += textSymbol;
+    console.log(textSymbol,222);
     editTextarea(textSymbol);
   } else if (textSymbol === 'Space') {
     textSymbol = ' ';
-    //textArea.textContent += textSymbol;
     editTextarea(textSymbol);
-  } else if (textSymbol === 'Backspace') {
-    //textArea.value = textArea.value.slice(0, -1);
+  } else if (textSymbol === 'Tab') {
     editTextarea(textSymbol);
+  } else if (textSymbol === 'Enter') {
+    textSymbol = '\n';
+    editTextarea(textSymbol);
+  } else if (textSymbol === 'Backspace' || textSymbol === 'Del') {
+    editTextarea(textSymbol);
+  } else if (textSymbol === 'CapsLock') {
+    if (enCapsLock) {
+      enCapsLock = false;
+      lang = lang.slice(0, 2);
+    } else {
+      enCapsLock = true;
+      lang += 'Caps';
+    }
+    document.querySelector('.keyboard-wrapper').remove();
+    addKeyboard();
+    const buttonCaps = document.querySelector('.CapsLock');
+    if (enCapsLock) buttonCaps.classList.add('caps-on');
+    else buttonCaps.classList.remove('caps-on');
+  } else if (textSymbol === 'Shift') {
+    lang += 'Shift';
+    document.querySelector('.keyboard-wrapper').remove();
+    addKeyboard();
+    const buttonShift = document.querySelector('.ShiftLeft');
+    buttonShift.classList.add('caps-on');
   }
-  console.log([indexPressedKey]);
+};
+
+document.addEventListener('keydown', (event) => {
+  if ((event.code === 'ControlLeft' && event.altKey) || (event.ctrlKey && event.code === 'AltLeft')) {
+    changeLang();
+  }
+  const indexPressedKey = keysObj.keyCodes.indexOf(event.code);
+  console.log([indexPressedKey],event.code);
+  document.querySelector(`.${event.code}`).classList.add('press');
+  updateTextArea(indexPressedKey);
 });
 
 document.addEventListener('keydown', (event) => {
@@ -195,33 +246,33 @@ document.addEventListener('keydown', (event) => {
 });
 document.addEventListener('keyup', (event) => {
   document.querySelector(`.${event.code}`).classList.remove('press');
+  if (event.code === 'ShiftLeft') {
+    lang = lang.slice(0, 2);
+    document.querySelector('.keyboard-wrapper').remove();
+    addKeyboard();
+    const buttonShift = document.querySelector('.ShiftLeft');
+    buttonShift.classList.remove('caps-on');
+  }
 });
 
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('key')) {
     const indexPressedKey = keysObj.keyCodes.indexOf(event.target.classList[1]);
-    const textArea = document.querySelector('.textarea');
-
-    let textSymbol = enArr[indexPressedKey];
-    if (textSymbol.length === 1) {
-      switch (lang) {
-        case 'ru': textSymbol = ruArr[indexPressedKey]; break;
-        case 'en': textSymbol = enArr[indexPressedKey]; break;
-        case 'ruCaps': textSymbol = ruCapsArr[indexPressedKey]; break;
-        case 'enCaps': textSymbol = enCapsArr[indexPressedKey]; break;
-        default: textSymbol = enArr[indexPressedKey];
-      }
-      editTextarea(textSymbol);
-    } else if (textSymbol === 'Space') {
-      textSymbol = ' ';
-      editTextarea(textSymbol);
-    }
-
-    console.log(enArr[indexPressedKey]);
+    updateTextArea(indexPressedKey);
   }
 });
 
+function setLocalStorage() {
+  localStorage.setItem('lang', lang);
+}
+function getLocalStorage() {
+  if (localStorage.getItem('lang')) {
+    lang = localStorage.getItem('lang');
+  } else lang = 'en';
+}
 window.addEventListener('load', () => {
-  alert('Я не успел до конца доделать, буду признателен, если дадите еще немного время');
+  //alert('Я не успел до конца доделать, буду признателен, если дадите еще немного время');
+  getLocalStorage();
   createHeader();
 });
+window.addEventListener('beforeunload', setLocalStorage);

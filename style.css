@@ -95,17 +95,20 @@ background-color:#000
 {
   color: rgba(0, 0, 0, 0);
 }
-.ShiftLeft{
+.ShiftLeft,
+.ShiftRight{
   width: 130px;
   background-color:#000
 }
-.ControlLeft{
+.ControlLeft,
+.ControlRight{
   width: 85px;
   background-color:#000
 }
 .Delete,
 .MetaLeft,
 .AltLeft,
+.AltRight,
 .ArrowRight,
 .ArrowUp,
 .ArrowDown,
@@ -114,6 +117,10 @@ background-color:#000
   background-color:#000
 }
 .press{
+  background-color: #0f0;
+  color:#444;
+}
+.caps-on{
   background-color: #0f0;
   color:#444;
 }
