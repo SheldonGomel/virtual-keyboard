@@ -124,3 +124,7 @@ background-color:#000
   background-color: #0f0;
   color:#444;
 }
+.description{
+  width: 480px;
+  margin: 10px auto;
+}
