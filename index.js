@@ -99,6 +99,11 @@ const createHeader = () => {
   textArea.classList.add('textarea');
   main.appendChild(textArea);
   addKeyboard();
+  const description = document.createElement('p');
+  description.classList.add('description');
+  description.innerText = 'Клавиатура создана в операционной системе Windows Для переключения языка комбинация: левыe ctrl + alt';
+  main.appendChild(description);
+
 };
 
 function createButton(value) {
