@@ -102,8 +102,7 @@ const createHeader = () => {
   const description = document.createElement('p');
   description.classList.add('description');
   description.innerText = 'Клавиатура создана в операционной системе Windows Для переключения языка комбинация: левыe ctrl + alt';
-  main.appendChild(description);
-
+  document.body.appendChild(description);
 };
 
 function createButton(value) {
